@@ -1,12 +1,10 @@
-* 数组自动填充，填充的元素不是`undefined`
-
-```js
 (() => {
     const arr = [];
     arr[0] = 0;
     arr[10] = 10;
 
     console.log(arr); // [0, empty × 9, 10]
+    console.log(arr[1]); // undefined
     console.assert(arr.length === 11);
 
     // forEach
@@ -15,7 +13,7 @@
         console.log(x);
         count += 1;
     });
-    // 输出
+    // 输出:
     // 0
     // 10
     console.assert(count === 2);
@@ -26,7 +24,7 @@
         console.log(arr[i]);
         count += 1;
     }
-    // 输出
+    // 输出:
     // 0
     // undefined × 9
     // 10
@@ -38,7 +36,7 @@
         console.log(x);
         count += 1;
     }
-    // 输出
+    // 输出:
     // 0
     // undefined × 9
     // 10
@@ -47,4 +45,11 @@
     console.log(Object.keys(arr)); // ['0', '10']
     console.log(Object.values(arr)); // [0, 10]
 })();
-```
+
+(() => {
+    console.log(Array(3)); // [empty × 3]
+    console.log([...Array(3)]); // [undefined, undefined, undefined]
+    console.log(Array.apply(null, Array(3))); // [undefined, undefined, undefined]
+    console.log(Array.from({ length: 3 })); // [undefined, undefined, undefined]
+    console.log(Array.from({ length: 3 }, (_, i) => i)); //  [0, 1, 2]
+})();
