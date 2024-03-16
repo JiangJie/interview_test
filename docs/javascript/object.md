@@ -75,3 +75,5 @@
     // 1
 })();
 ```
+
+* `Object.defineProperty`和直接赋值的区别
